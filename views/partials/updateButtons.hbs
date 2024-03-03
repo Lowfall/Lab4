@@ -1,6 +1,6 @@
 <div style="display: flex; justify-content:center; margin: 30px; ">
     <div style="width: 500px; display:flex; justify-content:space-between">
-        <form method="post" action="http://localhost:3000/Update" style="width: 100%;" enctype="application/json">
+        <form method="post" action="/Update" style="width: 100%;" enctype="application/json">
         <div style="width: 500px; display:flex; justify-content:space-between">
             <input  id="Id" name="id" type="text" style="height: 30px; width:45%" placeholder="Id" value="{{contact.Id}}" hidden >
             <input id="Name" name="name" type="text" style="height: 30px; width:45%" placeholder="Name" value="{{contact.Name}}">
@@ -20,12 +20,12 @@
     function Delete(){
         const id = document.getElementById("Id");
         var elem = {Id: id.value}
-        fetch("http://localhost:3000/Delete", {
+        fetch("/Delete", {
             method: "POST",  
             headers: {
             "Content-Type": "application/json"
             },
             body:JSON.stringify(elem)
-        }).then((resp) => {window.location = 'http://localhost:3000'});
+        }).then((resp) => {window.location = '/'});
     }
 </script>

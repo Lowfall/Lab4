@@ -10,7 +10,7 @@
     <div>
         <div id="contactBook" style="width: 500px; height: 300px; overflow: hidden; overflow-y: scroll; display: block; border: solid 1px black; padding: 10px;">
             {{#each contacts}}
-                <a id="{{Id}}" style="" class="contacts disabled-link" href="http://localhost:3000/Update?Id={{Id}}"><div>{{Name}} {{Phone}}</div></a>
+                <a id="{{Id}}" style="" class="contacts disabled-link" href="/Update?Id={{Id}}"><div>{{Name}} {{Phone}}</div></a>
             {{/each}}
         </div>    
     </div>

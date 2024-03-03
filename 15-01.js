@@ -11,7 +11,7 @@ const hb = handlebars.create({
 	defaultLayout: 'layout', 
 	extname: 'hbs',
   helpers:{
-    Back: 'document.location=\'http://localhost:3000\''
+    Back: 'document.location=\'/\''
   }
     
 });
