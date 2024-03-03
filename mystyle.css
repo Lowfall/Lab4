@@ -1,0 +1,11 @@
+.contacts{
+    text-decoration: none;
+    color: black;
+    font-size: 20px;
+    padding: 0 2px 0 0;
+}
+
+.contacts>div:hover{
+ background-color: bisque;
+ cursor: pointer;
+}

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/mystyle.css">
+    <title>Lab 4</title>
+</head>
+<body>
+    <div style="display: flex; justify-content:center; margin: 30px;">
+        <div>
+            <div id="contactBook" style="width: 500px; height: 300px; overflow: hidden; overflow-y: scroll; display: block; border: solid 1px black; padding: 10px;">
+            </div>
+            <div style="width: 500px;">
+                <form >
+                    <input type="button" value="Добавить" style="width: 100%; height: 30px; margin: 10px 0 0 10px;">
+                </form>
+            </div>  
+        </div>
+    </div>
+</body>
+</html>
+
+<script>
+    const Book = document.getElementById('contactBook');
+  fetch("http://localhost:3000/contacts").then(response =>response.json()).then(contacts => contacts.forEach(element => {
+    Book.innerHTML += `<a class="contacts" href ="#" id="${element.Id}"><div style="height:40px; border: 1px solid black;">${element.Name}  ${element.Phone}</div></a>`
+  }) )
+</script>
