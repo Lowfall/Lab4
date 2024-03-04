@@ -67,6 +67,9 @@ app.post('/Add',(req, res) => {
     }
     
     var contacts = JSON.parse(data);
+    var re = new RegExp("^375\\d{2}\\d{7}$");
+    console.log(attr['phone'])
+    if(re.test(attr['phone']) == true){
     var newContact ={
       Id: +id+1,
       Name:attr['name'],
@@ -76,6 +79,7 @@ app.post('/Add',(req, res) => {
     contacts.push(newContact);
     var db = JSON.stringify(contacts);
     fs.writeFile('Book.json',db,'utf8',(err)=>{});
+  }
   });
   res.writeHead(302, {
     'Location': '/' 
