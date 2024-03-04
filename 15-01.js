@@ -122,6 +122,9 @@ app.post('/Update',(req, res) => {
 
   fs.readFile('Book.json',(err,data)=>{    
     var contacts = JSON.parse(data);
+    var re = new RegExp("^375\\d{2}\\d{7}$");
+    console.log(attr['phone'])
+    if(re.test(attr['phone']) == true){
     var newContact ={
       Id:attr['id'],
       Name:attr['name'],
@@ -131,6 +134,7 @@ app.post('/Update',(req, res) => {
     contacts[index] = newContact;
     var db = JSON.stringify(contacts);
     fs.writeFile('Book.json',db,'utf8',(err)=>{});
+    }
   });
   res.writeHead(302, {
     'Location': '/' 
