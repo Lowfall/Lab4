@@ -3,12 +3,12 @@
         <form method="post" action="/Update" style="width: 100%;" enctype="application/json">
         <div style="width: 500px; display:flex; justify-content:space-between">
             <input  id="Id" name="id" type="text" style="height: 30px; width:45%" placeholder="Id" value="{{contact.Id}}" hidden >
-            <input id="Name" name="name" type="text" style="height: 30px; width:45%" placeholder="Name" value="{{contact.Name}}">
-            <input id="Phone" name="phone" type="text" style="height: 30px; width:45%" placeholder="Phone" value="{{contact.Phone}}">
+            <input id="Name" name="name" type="text" style="height: 30px; width:45%" placeholder="Name" value="{{contact.Name}}" onchange="Blocked()">
+            <input id="Phone" name="phone" type="text" style="height: 30px; width:45%" placeholder="Phone" value="{{contact.Phone}}" onchange="Blocked()" >
         </div>
         <div style="display:flex; justify-content:space-between; width:100$; margin:5px 0px 0px 0px " >
             <input type="submit" value="Изменить" style="width: 100%; height: 30px;">
-             <input type="button" value="Удалить" style="width: 100%; height: 30px;" onclick="Delete()">
+             <input id="delButton" type="button" value="Удалить" style="width: 100%; height: 30px;" onclick="Delete()">
               <input type="button" value="Отказаться" style="width: 100%; height: 30px;" onclick="{{Back}}">
         </div>
         </form>
@@ -17,6 +17,8 @@
 </div>  
 
 <script>
+
+
     function Delete(){
         const id = document.getElementById("Id");
         var elem = {Id: id.value}
@@ -27,5 +29,19 @@
             },
             body:JSON.stringify(elem)
         }).then((resp) => {window.location = '/'});
+    }
+
+    var name = document.getElementById("Name").value;
+    var phone = document.getElementById("Phone").value;
+    
+
+    function Blocked(){
+        var deleteElem = document.getElementById('delButton');
+        if(document.getElementById("Name").value != name || document.getElementById("Phone").value != phone){
+            deleteElem.disabled = true;
+        }
+        else{
+            deleteElem.disabled = false;
+        }
     }
 </script>
